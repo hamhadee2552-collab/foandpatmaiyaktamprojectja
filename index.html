@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Potato Blight Risk Predictor</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f4f6f7; }
+        input { margin: 5px 0; width: 100%; padding: 8px; }
+        button { padding: 10px; width: 100%; background: green; color: white; border: none; }
+        .box { background: white; padding: 20px; border-radius: 10px; width: 400px; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+<h2>🥔 Potato Blight Risk Predictor</h2>
+
+<form method="POST">
+    Temperature (°C):
+    <input type="number" step="0.1" name="temp" required>
+
+    Humidity (%):
+    <input type="number" step="0.1" name="humidity" required>
+
+    Rainfall (mm):
+    <input type="number" step="0.1" name="rain" required>
+
+    Leaf Wetness (hours):
+    <input type="number" step="0.1" name="leafwet" required>
+
+    Plant Age (days):
+    <input type="number" step="1" name="age" required>
+
+    <button type="submit">Predict</button>
+</form>
+
+{% if result %}
+<hr>
+<h3>📊 Risk Probability</h3>
+<p>🟢 Low Risk: {{ result.low }} %</p>
+<p>🟡 Medium Risk: {{ result.medium }} %</p>
+<p>🔴 High Risk: {{ result.high }} %</p>
+{% endif %}
+</div>
+
+</body>
+</html>
